@@ -1,0 +1,19 @@
+version: 3
+services:
+  polkanode:
+    image: chevdor/polkadot:latest
+    volumes:
+      - ./data:/data
+    ports:
+      - 30333:30333
+      - 9933:9933
+      - 9944:9944
+    command: polkadot --chain=westend -d /data --name="pchallenge"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
